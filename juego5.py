@@ -27,6 +27,13 @@ def xy(count):
     "Convert tiles count to (x, y) coordinates."
     return (count % 8) * 50 - 200, (count // 8) * 50 - 200
 
+#Def para la muestra de datos
+def count(x):
+    "Display how many taps"
+    return (count)
+
+#Es necesario ubicar la parte que muestra los numeros para centrar los numeros
+
 def tap(x, y):
     "Update mark and hidden tiles based on tap."
     spot = index(x, y)
@@ -38,6 +45,17 @@ def tap(x, y):
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
+
+#Def para el numero de clicks
+def contador():
+  numero = 0
+  while True:
+    numero += 1
+    yield numero
+
+    cuenta = contador()
+    for i in range(5):
+        print(next(cuenta))
 
 def draw():
     "Draw image and tiles."
@@ -62,6 +80,9 @@ def draw():
 
     update()
     ontimer(draw, 100)
+
+
+  
 
 shuffle(tiles)
 setup(420, 420, 370, 0)
