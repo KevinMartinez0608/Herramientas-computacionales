@@ -6,13 +6,15 @@ ball = vector(-200, -200)
 speed = vector(0, 0)
 targets = []
 
+
+#Los valores de velocidad pueden ser movidos desde speed.x y speed.y, al tener un mayor numero, mayor sera esa velocidad
 def tap(x, y):
     "Respond to screen tap."
     if not inside(ball):
         ball.x = -199
         ball.y = -199
-        speed.x = (x + 200) / 25
-        speed.y = (y + 200) / 25
+        speed.x = (x + 1000) / 25
+        speed.y = (y + 1000) / 25
 
 def inside(xy):
     "Return True if xy within screen."
@@ -42,6 +44,8 @@ def move():
     for target in targets:
         target.x -= 0.5
 
+#Moderar la velocidad de las pelotas para mayor rapidez en estas.
+
     if inside(ball):
         speed.y -= 0.35
         ball.move(speed)
@@ -55,9 +59,12 @@ def move():
 
     draw()
 
-    for target in targets:
-        if not inside(target):
-            return
+#Este for nos indica que cuando el target (las pelotitas) salga del tablero corte el programa, si nosotros quisieramos que el programa siguiera con su Loop Original, tendriamos que 
+#quitar este for y continuaria infinitamente
+
+   # for target in targets:
+    #    if not inside(target):
+     #       return
 
     ontimer(move, 50)
 
